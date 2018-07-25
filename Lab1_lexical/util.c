@@ -9,7 +9,7 @@ void *checked_malloc (int len){
 		fprintf(stderr,"\nRan out of memery!\n");
 		exit(1);
 	}
-	return 1;
+	return p;
 }
 
 string  String (char *s ){
@@ -19,9 +19,9 @@ string  String (char *s ){
 }
 
 U_boolList U_BoolList(bool head,U_boolList tail){
-	U_boolList list = checked_malloc(sizeof(sizeof(*list))){
-		list - > head=head ;
-		list -> tail = tail; 
-		return list ; 
-	}
+	U_boolList list = checked_malloc(sizeof(*list));
+	list -> head=head ;
+	list -> tail = tail; 
+	return list ; 
+	
 }

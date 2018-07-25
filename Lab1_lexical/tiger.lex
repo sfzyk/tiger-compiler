@@ -6,10 +6,10 @@
 int charPos = 1 ;
 int yywrap(void){
 	charPos=1;
-	return 1
+	return 1;
 }
 void adjust(void){
-	EM_tokPos=charPos
+	EM_tokPos=charPos;
 	charPos+=yyleng;
 }
 
@@ -20,6 +20,6 @@ void adjust(void){
 " "		{adjust(); continue;}
 \n		{adjust();EM_newline();continue;}
 ","		{adjust();return COMMA;}
-for		{adjust();return for ;}
+for		{adjust();return FOR ;}
 [0-9]+	{adjust(); yylval.ival = atoi (yytext); return INT ;}
 .		{adjust(); EM_error(EM_tokPos, "illeagl token ");	}
