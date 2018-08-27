@@ -1,0 +1,97 @@
+%{
+#include <string.h>
+#include "util.h"
+#include "tokens.h"
+#include "errormsg.h"
+
+int charPos=1;
+
+char str[10];
+
+int yywrap(void)
+{
+ charPos=1;
+ return 1;
+}
+
+
+void adjust(void)
+{
+ EM_tokPos=charPos;
+ charPos+=yyleng;
+}
+
+%}
+
+%x string_sta comment_sta
+
+%%
+" "	 {adjust(); continue;}
+\n	 {adjust(); EM_newline(); continue;}
+","	 {adjust(); return COMMA;}
+for  	 {adjust(); return FOR;}
+[0-9]+	 {adjust(); yylval.ival=atoi(yytext); return INT;}
+.	 {adjust(); EM_error(EM_tokPos,"illegal token");}
+
+[a-zA-Z][a-zA-Z0-9_]* {adjust(); return ID;}
+"("  {adjust();return LPAREN;}
+")"  {adjust();return RPAREN;}
+"{"  {adjust();return LBRACE;}
+"}"  {adjust();return RBRACE;}
+"." {adjust():return DOT;}
+"+"  {adjust();return PLUS;}
+"-"  {adjust();return MINUS;}
+"*"  {adjust();return TIMES;}
+"/"  {adjust();return DIVIDES;}
+"="  {adjust();return EQ;}
+"!=" {adjust();return NEQ;}
+"<"  {adjust();return LT;}
+"<=" {adjust();return LE;}
+">"  {adjust(); return GT;}
+">=" {adjust(); return GE;}
+":=" {adjust(); return ASSIGN;}
+if {adjust(); return IF;}
+then {adjust(); return THEN;}
+else {adjust(); return ELSE;}
+to {adjust(); return TO;}
+do {adjust(); return DO;}
+let {adjust(); return LET;}
+in {adjust(); return IN;}
+end {adjust(); return END;}
+of  {adjust(); return OF;}
+break {adjust();return BREAK} 
+function {adjust();return FUNCTION;}
+nil {adjust();return NIL;}
+ 
+\"    {adjust(); BEGIN(string_sta);  } 
+"/*"  {adjust(); BEGIN(comment_sta); }
+
+
+<string_sta> {
+	\"  {
+			adjust();   
+			if(str[0]==0){
+			yylex.sval="(null_sf)";
+			}else{
+				yylex.sval=String(str);
+			}
+			BEGIN(INITIAL); 
+			return STRING;
+	
+		}	
+	.  {
+			adjust();
+			strcat(str,yytext);
+		}
+}
+<comment_sta> {
+	"*/" {
+		adjust();
+	}
+	
+	. {
+		adjust();
+			
+	}
+  	
+}

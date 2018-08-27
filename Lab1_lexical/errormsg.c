@@ -62,3 +62,4 @@ void EM_reset(string fname)
  yyin = fopen(fname,"r");
  if (!yyin) {EM_error(0,"cannot open"); exit(1);}
 }
+

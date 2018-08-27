@@ -1,0 +1,29 @@
+test1.tig:1.42: illegal token
+test1.tig:2.4: illegal token
+test1.tig:3.30: illegal token
+test1.tig:4.10: illegal token
+test1.tig:4.30: illegal token
+test1.tig:4.33: illegal token
+test1.tig:4.39: illegal token
+test1.tig:5.3: illegal token
+test1.tig:6.6: illegal token
+test1.tig:7.4: illegal token
+unkown : get \n       LET   44
+unkown : get \n        ID   50 (null)
+        ID   56 (null)
+        EQ   64
+        ID   66 (null)
+        OF   72
+        ID   75 (null)
+unkown : get \n        ID   81 (null)
+        ID   85 (null)
+unkown : :        ID   90 (null)
+    ASSIGN   98
+        ID  101 (null)
+unkown : [       INT  110 10
+unkown : ]        OF  114
+       INT  117 0
+unkown : get \n        IN  120
+unkown : get \n        ID  125 (null)
+unkown : get \n       END  131
+unkown : get \n
