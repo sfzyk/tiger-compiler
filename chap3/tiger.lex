@@ -1,7 +1,7 @@
 %{
 #include <string.h>
 #include "util.h"
-#include "tokens.h"
+#include "y.tab.h"
 #include "errormsg.h"
 
 int charPos=1;
@@ -66,7 +66,7 @@ void intstr(char * strp){
 "*"  {adjust();return TIMES;}
 "/"  {adjust();return DIVIDE;}
 "="  {adjust();return EQ;}
-"!=" {adjust();return NEQ;}
+"<>" {adjust();return NEQ;}
 "<"  {adjust();return LT;}
 "<=" {adjust();return LE;}
 ">"  {adjust(); return GT;}
@@ -91,7 +91,7 @@ while {adjust(); return WHILE;}
 nil {adjust();return NIL;}
 type {adjust(); return TYPE;}
 var {adjust(); return VAR;}
-
+array {adjust();return ARRAY;}
 
 " "	 {adjust(); continue;}
 \n	 {adjust(); EM_newline(); continue;}

@@ -1,0 +1,4 @@
+for i in `seq 1 1 50`
+do 
+    ./$1 ../testcases/test$i.tig 
+done
