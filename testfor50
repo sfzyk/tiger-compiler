@@ -1,4 +1,5 @@
 for i in `seq 1 1 50`
-do 
+do
+	echo $i\n
     ./$1 ../testcases/test$i.tig 
 done
