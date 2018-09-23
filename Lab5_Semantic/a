@@ -1,0 +1,4 @@
+make clean
+clear
+make b
+./a.out test4.tig

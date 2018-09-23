@@ -5,8 +5,6 @@
 #ifndef TIGER_REMOTE_ENV_H
 #define TIGER_REMOTE_ENV_H
 
-#include "types.h"
-#include "symbol.h"
 
 typedef struct E_enventry_* E_enventry;
 

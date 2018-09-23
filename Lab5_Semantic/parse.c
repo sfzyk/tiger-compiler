@@ -9,6 +9,7 @@
 #include "prabsyn.h"
 #include "errormsg.h"
 #include "parse.h"
+#include "types.h"
 #include "semant.h"
 extern int yyparse(void);
 extern A_exp absyn_root;
@@ -28,8 +29,10 @@ int main(int argc, char ** argv){
 		exit(1);
 	}
 	parse(argv[1]);
-	//pr_exp(stderr,absyn_root,0);
+	pr_exp(stderr,absyn_root,0);
 	SEM_transProg(absyn_root);
+	fprintf(stderr,"\nSemantic type check done");
+
 	fprintf(stderr,"\n");
 	return 0;
 }

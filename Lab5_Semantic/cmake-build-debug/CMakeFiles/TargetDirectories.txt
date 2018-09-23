@@ -1,0 +1,3 @@
+/home/sf/c/Lab5_Semantic/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/sf/c/Lab5_Semantic/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/sf/c/Lab5_Semantic/cmake-build-debug/CMakeFiles/Lab5_Semantic.dir

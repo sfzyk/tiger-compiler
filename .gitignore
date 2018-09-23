@@ -1,3 +1,5 @@
 *.swp
 cmake-build-debug/*
-CMakeLists.txt
+CMakeLists.tx
+*.0
+a.out
