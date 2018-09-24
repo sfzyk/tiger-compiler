@@ -45,8 +45,8 @@
       <file leaf-file-name="semant.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/semant.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="300" column="105" lean-forward="false" selection-start-line="300" selection-start-column="105" selection-end-line="300" selection-end-column="105" />
+            <state relative-caret-position="-5042">
+              <caret line="131" column="33" lean-forward="false" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="33" />
               <folding>
                 <element signature="e#41#59#0" expanded="true" />
               </folding>
@@ -135,6 +135,8 @@
       <find>no such field</find>
       <find>i need interger</find>
       <find>can</find>
+      <find>actual</find>
+      <find>actual_ty</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -221,12 +223,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537602723195</updated>
-      <workItem from="1537602725781" duration="18590000" />
+      <workItem from="1537602725781" duration="21747000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18590000" />
+    <option name="totallyTimeSpent" value="21747000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -365,8 +367,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/semant.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="300" column="105" lean-forward="false" selection-start-line="300" selection-start-column="105" selection-end-line="300" selection-end-column="105" />
+        <state relative-caret-position="-5042">
+          <caret line="131" column="33" lean-forward="false" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="33" />
           <folding>
             <element signature="e#41#59#0" expanded="true" />
           </folding>
