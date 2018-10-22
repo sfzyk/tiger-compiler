@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Lab5_Semantic"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/sf/c/Lab6_translate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/sf/c/Lab6_translate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/sf/c/Lab6_translate/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lab5_Semantic">
+				<Option output="/home/sf/c/Lab6_translate/cmake-build-debug/Lab5_Semantic" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sf/c/Lab6_translate/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab5_Semantic"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Lab5_Semantic/fast">
+				<Option output="/home/sf/c/Lab6_translate/cmake-build-debug/Lab5_Semantic" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sf/c/Lab6_translate/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 Lab5_Semantic/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/sf/c/Lab6_translate/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/sf/c/Lab6_translate/absyn.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/absyn.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/env.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/env.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/errormsg.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/errormsg.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/lex.yy.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/parse.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/parse.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/parsetest.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/prabsyn.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/prabsyn.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/semant.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/semant.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/symbol.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/symbol.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/table.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/table.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/types.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/types.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/util.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/util.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/y.tab.c">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/y.tab.h">
+			<Option target="Lab5_Semantic"/>
+		</Unit>
+		<Unit filename="/home/sf/c/Lab6_translate/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
