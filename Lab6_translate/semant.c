@@ -7,9 +7,11 @@
 #include "absyn.h"
 #include "errormsg.h"
 #include "types.h"
-#include "env.h"
-#include "semant.h"
+#include "temp.h"
+#include "tree.h"
 #include "translate.h"
+#include "semant.h"
+#include "env.h"
 #include "find_escape.h"
 
 struct expty{Tr_exp exp;Ty_ty ty;};
@@ -29,7 +31,7 @@ void SEM_transProg(A_exp exp){
 
     Esc_findEscape(exp);//buggy
 
-    struct expty prog = transExp(lev,venv,tenv,exp);
+    struct expty prog = transExp(lev,venv,tenv,exp,NULL);
 
 }
 
@@ -124,7 +126,7 @@ break;
 }
 
 
-void transDec(S_table venv,S_table tenv ,A_dec dec,Tr_level lev){
+void transDec(Tr_level lev,S_table venv,S_table tenv ,A_dec dec,Temp_label breakbl){
 
     switch (dec->kind) {
         case A_typeDec: {
@@ -171,7 +173,7 @@ void transDec(S_table venv,S_table tenv ,A_dec dec,Tr_level lev){
              */
         case A_varDec: {
             Ty_ty varty;
-            varty=transExp(venv,tenv,dec->u.var.init).ty;
+            varty=transExp(lev,venv,tenv,dec->u.var.init,breakbl).ty;
 
             if(dec->u.var.typ){
                 Ty_ty mark_varty=S_look(tenv,dec->u.var.typ);
@@ -180,7 +182,7 @@ void transDec(S_table venv,S_table tenv ,A_dec dec,Tr_level lev){
                 }
 
                 Tr_access  Tr_a = Tr_allocLocal(lev,dec->u.var.escape);
-                S_enter(venv,dec->u.var.var,E_VarEntry(mark_varty));
+                S_enter(venv,dec->u.var.var,E_VarEntry(Tr_a,mark_varty));
 
             }else{
                 if(varty->kind==Ty_nil){
@@ -203,7 +205,7 @@ void transDec(S_table venv,S_table tenv ,A_dec dec,Tr_level lev){
                     }
                 }
                 Temp_label t_l = Temp_newlabel();
-                U_BoolList esc_l =makeFormalBoolList(f->head->params);
+                U_boolList esc_l =makeFormalBoolList(f->head->params);
                 Ty_tyList formals=makeFormalTyList(tenv,f->head->params);
                 Tr_level  newlevel = Tr_newLevel(lev,t_l,esc_l);
 
@@ -244,7 +246,7 @@ void transDec(S_table venv,S_table tenv ,A_dec dec,Tr_level lev){
                     params=params->tail;
                 }
 
-                struct expty truety =transExp(lev,venv,tenv,f->head->body);
+                struct expty truety =transExp(lev,venv,tenv,f->head->body,breakbl);
 
                 if(truety.ty!=funwait->u.func.ty){
                     EM_error(f->head->pos,"return type error");
@@ -342,42 +344,42 @@ struct expty transExp(Tr_level  lev,S_table venv, S_table tenv,A_exp a ,Temp_lab
                     if(right.ty->kind != Ty_int){
                         EM_error(a->u.op.left->pos,"i need interger");
                     }
-                    return expTy(Tr_arOpExp(oper,left,right),Ty_Int());
+                    return expTy(Tr_arOpExp(oper,left.exp,right.exp),Ty_Int());
             }
             else if(oper==A_eqOp|oper==A_neqOp){
                     if(left.ty->kind!=right.ty->kind && left.ty->kind!=Ty_nil && right.ty->kind!=Ty_nil){
                         EM_error(a->u.op.right->pos,"value type not match");
-                        return expTy(Tr_nullCx(),Ty_int());
+                        return expTy(Tr_nullCx(),Ty_Int());
                     }
 
                     if(left.ty->kind==Ty_string){
-                        return expTy(Tr_strOpExp(oper,left,right),Ty_Int());
+                        return expTy(Tr_strOpExp(oper,left.exp,right.exp),Ty_Int());
                     }
                     else{
-                        return expTy(Tr_condOpExp(oper,left,right),Ty_Int());
+                        return expTy(Tr_condOpExp(oper,left.exp,right.exp),Ty_Int());
                     }
 
             }else if(oper==A_leOp| oper==A_geOp | oper==A_gtOp | oper==A_ltOp){
                 if(left.ty->kind!=right.ty->kind && left.ty->kind!=Ty_nil && right.ty->kind!=Ty_nil){
                     EM_error(a->u.op.right->pos,"value type not match");
-                    return expTy(Tr_nullCx(),Ty_int());
+                    return expTy(Tr_nullCx(),Ty_Int());
                 }
                 if(left.ty->kind!=Ty_int && left.ty->kind !=Ty_string){
                     EM_error(a->u.op.left->pos,"only int and string are allow for comapare");
-                    return expTy(Tr_nullCx(),Ty_int());
+                    return expTy(Tr_nullCx(),Ty_Int());
                 }
                 if(left.ty->kind==Ty_int){
-                    return expTy(Tr_condOpExp(op,left,right),Ty_Int());
+                    return expTy(Tr_condOpExp(oper,left.exp,right.exp),Ty_Int());
 
                 }else if(left.ty->kind==Ty_string){
-                    return expTy(Tr_strOpExp(op,left,right),Ty_Int());
+                    return expTy(Tr_strOpExp(oper,left.exp,right.exp),Ty_Int());
                 }
             }
             return expTy(Tr_nullEx(),Ty_Int());
         }
         break;
         case A_varExp:{
-            struct expty e=transVar(lev,venv,tenv,a->u.var,breaklbl); //查找这个变量的定义时访问
+            struct expty e=transVar(lev,venv,tenv,a->u.var,breakbl); //查找这个变量的定义时访问
             return expTy(Tr_simpleVar(e.exp,lev),e.ty); //生成这个变量的访问
         }
         break;
@@ -386,13 +388,13 @@ struct expty transExp(Tr_level  lev,S_table venv, S_table tenv,A_exp a ,Temp_lab
            A_expList p=a->u.seq;
 
            while(p && p->tail){
-               transExp(lev,venv,tenv,p->head,breaklbl);
+               transExp(lev,venv,tenv,p->head,breakbl);
                p=p->tail;
            }
 
            struct expty e;
 
-           if(p) e = transExp(lev,venv,tenv,p->head,breaklbl);
+           if(p) e = transExp(lev,venv,tenv,p->head,breakbl);
                 else  e = expTy(NULL,Ty_Void());
 
            return e;
@@ -420,6 +422,7 @@ struct expty transExp(Tr_level  lev,S_table venv, S_table tenv,A_exp a ,Temp_lab
 
             if(e && e->kind==E_funEntry){
                 Ty_tyList p_actual=e->u.func.formals;
+                Tr_level func_lec=e->u.func.level;
                 A_expList p=a->u.call.args;
                 Tr_expList explist=NULL;
                 while(p && p_actual){
@@ -441,7 +444,7 @@ struct expty transExp(Tr_level  lev,S_table venv, S_table tenv,A_exp a ,Temp_lab
 			        EM_error(a->pos,"arg number not enough");
 		        }
 
-                return expTy(Tr_callExp(func_label,explist),e->u.func.ty);
+                return expTy(Tr_callExp(func_label,explist,func_lec,lev),e->u.func.ty);
             }else{
                 EM_error(a->pos,"just not function");
             }
@@ -541,7 +544,9 @@ struct expty transExp(Tr_level  lev,S_table venv, S_table tenv,A_exp a ,Temp_lab
            A_exp body  = a->u.forr.body;
             S_beginScope(tenv);
             S_beginScope(venv);
-            S_enter(venv,count,E_VarEntry(Ty_Int()));
+
+            Tr_access Tr_a =Tr_allocLocal(lev,a->u.forr.escape);
+            S_enter(venv,count,E_VarEntry(Tr_a,Ty_Int()));
             /*
            E_enventry e= S_look(venv,count);
 

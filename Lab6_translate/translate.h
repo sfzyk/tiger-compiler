@@ -14,10 +14,9 @@ Tr_accessList Tr_AccessList(Tr_accessList head,Tr_accessList tail);
 
 Tr_expList Tr_ExpList(Tr_exp head,Tr_expList tail);
 
-Tr_level Tr_newLevel(Tr_level,temp_Label,U_boolList);
+Tr_level Tr_newLevel(Tr_level,Temp_label,U_boolList);
 Tr_level Tr_outermost(void);
 
-Tr_access Tr_accessList();
 Tr_access Tr_allocLocal(Tr_level,bool);
 
 
@@ -47,6 +46,6 @@ Tr_exp Tr_breakExp(Temp_label breaklbl);
 Tr_exp Tr_arrayExp(Tr_exp init, Tr_exp size);
 Tr_exp Tr_recordExp(Tr_expList el, int fieldCount);
 
-Tr_exp Tr_callExp(Temp_label name, Tr_expList expList);
+Tr_exp Tr_callExp(Temp_label name, Tr_expList expList,Tr_level,Tr_level);
 
 #endif //LAB5_SEMANTIC_TRANSLATE_H

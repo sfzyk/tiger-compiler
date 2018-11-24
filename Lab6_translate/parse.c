@@ -6,11 +6,15 @@
 #include "util.h"
 #include "symbol.h"
 #include "absyn.h"
+#include "temp.h"
 #include "prabsyn.h"
 #include "errormsg.h"
 #include "parse.h"
 #include "types.h"
+#include "translate.h"
+
 #include "semant.h"
+
 extern int yyparse(void);
 extern A_exp absyn_root;
 
