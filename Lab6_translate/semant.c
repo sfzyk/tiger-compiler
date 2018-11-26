@@ -182,7 +182,7 @@ void transDec(S_table venv,S_table tenv ,A_dec dec,Tr_level lev){
                 Tr_access  Tr_a = Tr_allocLocal(lev,dec->u.var.escape);
                 S_enter(venv,dec->u.var.var,E_VarEntry(mark_varty));
 
-            }else{
+            }else{ 
                 if(varty->kind==Ty_nil){
                     EM_error(dec->pos,"short term can't be Nil");
                 }
