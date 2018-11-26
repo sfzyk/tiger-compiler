@@ -9,9 +9,9 @@
 
 void SEM_transProg(A_exp exp);
 
-struct expty transVar(S_table venv, S_table tenv,A_var v,Tr_level level);
-struct expty transExp(S_table venv, S_table tenv,A_exp a,Tr_level level);
-void         transDec(S_table venv,S_table tenv, A_dec d,Tr_level level);
+struct expty transVar(Tr_level lev,S_table venv, S_table tenv,A_var v,Temp_label breakbl);
+struct expty transExp(Tr_level lev,S_table venv, S_table tenv,A_exp a,Temp_label breakbl);
+void         transDec(Tr_level lev,S_table venv,S_table tenv, A_dec d,Temp_label breakbl);
 Ty_ty transTy(S_table tenv, A_ty t);
 
 

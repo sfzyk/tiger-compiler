@@ -1,14 +1,17 @@
-b : parse.o y.tab.o errormsg.o util.o symbol.o absyn.o  y.tab.o prabsyn.o lex.yy.o semant.o env.o table.o types.o
-	cc -g parse.o errormsg.o util.o symbol.o absyn.o  y.tab.o prabsyn.o lex.yy.o semant.o env.o table.o types.o
+b : parse.o y.tab.o errormsg.o util.o symbol.o absyn.o  y.tab.o prabsyn.o lex.yy.o semant.o env.o table.o types.o translate.o tree.o frame.o find_escape.o
+	cc -g parse.o errormsg.o util.o symbol.o absyn.o  y.tab.o prabsyn.o lex.yy.o semant.o env.o table.o types.o translate.o tree.o frame.o find_escape.o
+
 a.out: parsetest.o y.tab.o lex.yy.o errormsg.o util.o symbol.o absyn.o table.o
 	cc -g parsetest.o y.tab.o lex.yy.o errormsg.o util.o symbol.o absyn.o table.o
-translate.o : tanslate.c absyn.h translate.h petiumframe.h frame.h temp.h tree.h util.h error.h
-	cc -g -c tanslate.c
+
+translate.o : translate.c absyn.h translate.h frame.h frame.h temp.h tree.h util.h errormsg.h
+	cc -g -c translate.c
+
 frame.o : petiumframe.c frame.h util.h tree.h temp.h
 	cc -g -c petiumframe.c -o frame.o
 
 find_escape.o : find_escape.c util.h absyn.h symbol.h table.h find_escape.h errormsg.h
-	cc -g -c findescape.c
+	cc -g -c find_escape.c
 
 tree.o : tree.c tree.h util.h symbol.h temp.h
 	cc -g -c tree.c
@@ -21,10 +24,9 @@ types.o : types.c
 
 parse.o : parse.c
 	cc -g -c parse.c
+
 env.o : env.c
 	cc -g -c env.c
-table.o : table.c 
-	cc -g -c table.c
 
 semant.o : semant.c 
 	cc -g -c semant.c 

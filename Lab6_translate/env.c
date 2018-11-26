@@ -3,10 +3,15 @@
 //
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "util.h"
 #include "symbol.h"
 #include "types.h"
+#include "temp.h"
+#include "absyn.h"
+#include "translate.h"
 #include "env.h"
+
 
 
 E_enventry E_VarEntry(Tr_access access, Ty_ty ty){
