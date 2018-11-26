@@ -144,5 +144,39 @@ T_exp F_FPExp(T_exp fp){
 T_exp F_externalCall(string s,T_expList args){
 	return T_Call(Temp_namedlabel(s),args);
 }
+// 标签和字符串
+F_frag F_stringFrag(Temp_label label,string str){
+    F_frag f = checked_malloc(sizeof(*f));
+    f->kind = F_stringFrag;
+    f->u.stringg.label=label;
+    f->u.stringg=str;
+    return f;
+}
+//栈帧和中间表示树
+F_frag F_procFrag(T_stm body,F_frame frame){
+	F_frag  f=checked_malloc(sizeof(*f));
+	f->kind=F_procFrag;
+	f->u.proc.body=body;
+	f->u.proc.frame=frame;
+	return f;
+}
 
+F_fragList F_FragList(F_frag head,F_fragList tail) {
+	F_fragList fl = checked_malloc(sizeof(*fl));
+	fl->tail = tail;
+	fl->head = head;
+	return fl;
+}
+static Temp_temp rv=NULL;
+
+Temp_temp F_RV(void){
+	if(rv==NULL){
+		rv=Temp_newtemp();
+	}
+	return rv;
+}
+
+T_stm F_procEntryExit1(F_frame f ,T_stm stm){// 一种推荐的虚拟实现
+	return  stm;
+}
 

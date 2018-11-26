@@ -39,4 +39,28 @@ T_exp F_FPExp(T_exp);
  */
 T_exp F_externalCall(string,T_expList);
 
+Temp_temp F_RV(void);//用作返回值的单元
+
+T_stm F_procEntryExit1(F_frame,T_stm);//处理函数入口代码
+
+typedef struct F_frag_ * F_frag;
+struct F_frag_{
+    F_frame enum{F_stringFrag,F_procFrag}kind;
+    union{
+        struct{Temp_label label;
+        string str;
+        }stringg;
+        struct{
+            T_stm body;F_frame frame;
+        }proc;
+    }u;
+};
+
+F_frag F_StringFrag(Temp_label,string str);
+F_frag F_procEntryExit(Tr_level level,Tr_exp body,Tr_accessList formals);
+
+typedef struct F_fragList_* F_fragList;
+struct F_fragList_ {F_frag head,F_fragList tail;};
+F_fragList F_FragList(F_frag,F_fragList);
+
 #endif //LAB5_SEMANTIC_FRAME_H
